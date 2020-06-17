@@ -1,0 +1,24 @@
+syntax = "proto3";
+service FileUploader {
+  rpc Upload (FileRegisterRequest) returns (FileRegisterResponse);
+}
+message FileRegisterRequest {
+  string name = 1;
+  bytes  content = 2; 
+}
+message FileRegisterResponse {
+  string identifier = 1;
+  string status = 2;
+}
+
+service FileUploadStatus {
+  rpc Inquire (FileUploadStatusRequest) returns (FileUploadStatusResponse);
+}
+
+message FileUploadStatusRequest {
+  string identifier = 1;
+}
+
+message FileUploadStatusResponse {
+  string status = 1;
+}
